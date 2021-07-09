@@ -1,24 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SoH-EA-jlq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="demoCrash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vDA-ag-j2D">
+                                <rect key="frame" x="142.5" y="403" width="129" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-6q-TWd">
+                                        <rect key="frame" x="0.0" y="0.0" width="129" height="30"/>
+                                        <state key="normal" title="Next VC"/>
+                                        <connections>
+                                            <segue destination="MPV-r7-DbG" kind="show" id="DSW-0H-ZWO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJl-3D-fh6">
+                                        <rect key="frame" x="0.0" y="30" width="129" height="30"/>
+                                        <state key="normal" title="数组越界"/>
+                                        <connections>
+                                            <action selector="actionCrashArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVl-HM-5rZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="any-La-k00">
+                                        <rect key="frame" x="0.0" y="60" width="129" height="30"/>
+                                        <state key="normal" title="Swift ? -&gt; !  强解包"/>
+                                        <connections>
+                                            <action selector="actionCrashMalloc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5GE-1K-YhV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDA-ag-j2D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eFP-PN-Ude"/>
+                            <constraint firstItem="vDA-ag-j2D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pS0-MS-ej4"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="tzH-my-Ali"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="491" y="121"/>
+        </scene>
+        <!--Next View Controller-->
+        <scene sceneID="BuV-Um-GIp">
+            <objects>
+                <viewController id="MPV-r7-DbG" customClass="NextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Km-Tv-G1u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kj5-2U-rJf">
+                                <rect key="frame" x="140.5" y="388" width="133" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-Ct-dHf">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="30"/>
+                                        <state key="normal" title="NSMallocException"/>
+                                        <connections>
+                                            <action selector="actionCrashMalloc:" destination="MPV-r7-DbG" eventType="touchUpInside" id="EtC-fV-6Q1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5b-Zg-g1G">
+                                        <rect key="frame" x="0.0" y="30" width="133" height="30"/>
+                                        <state key="normal" title="数组越界"/>
+                                        <connections>
+                                            <action selector="actionCrashArray:" destination="MPV-r7-DbG" eventType="touchUpInside" id="8aY-FT-Jnv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-tr-tte">
+                                        <rect key="frame" x="0.0" y="60" width="133" height="30"/>
+                                        <state key="normal" title="不存在string的方法"/>
+                                        <connections>
+                                            <action selector="actionCrashNotMethodString:" destination="MPV-r7-DbG" eventType="touchUpInside" id="fOD-n0-2uA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wau-98-QbP">
+                                        <rect key="frame" x="0.0" y="90" width="133" height="30"/>
+                                        <state key="normal" title="释放不存在的空间"/>
+                                        <connections>
+                                            <action selector="actionCrashFree:" destination="MPV-r7-DbG" eventType="touchUpInside" id="37T-er-bGu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tXf-aN-Gwr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kj5-2U-rJf" firstAttribute="centerY" secondItem="4Km-Tv-G1u" secondAttribute="centerY" id="P6z-lg-bHY"/>
+                            <constraint firstItem="kj5-2U-rJf" firstAttribute="centerX" secondItem="4Km-Tv-G1u" secondAttribute="centerX" id="fln-4B-yN3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Occ-wb-VAq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2lI-3r-hCw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1267" y="121"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NUZ-Kx-PVL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SoH-EA-jlq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LLA-Zp-rkt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Dg1-lD-vj8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXk-lw-hH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="120.53571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

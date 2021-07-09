@@ -3,23 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653E55CE3EF1F686E9B6D9E1 /* libPods-demoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C62AB98891B25235DA0C34 /* libPods-demoCrash.a */; };
+		7C2E814F267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E814E267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift */; };
 		7C3B7D25267588B8005286D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B7D24267588B8005286D3 /* AppDelegate.swift */; };
 		7C3B7D29267588B8005286D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B7D28267588B8005286D3 /* ViewController.swift */; };
 		7C3B7D2C267588B8005286D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3B7D2A267588B8005286D3 /* Main.storyboard */; };
 		7C3B7D2E267588B9005286D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C3B7D2D267588B9005286D3 /* Assets.xcassets */; };
 		7C3B7D31267588B9005286D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3B7D2F267588B9005286D3 /* LaunchScreen.storyboard */; };
-		7C3B7D402675897F005286D3 /* DoraemonCrashTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B7D3A2675897F005286D3 /* DoraemonCrashTool.m */; };
-		7C3B7D412675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B7D3C2675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.m */; };
-		7C3B7D422675897F005286D3 /* DoraemonCrashSignalExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B7D3E2675897F005286D3 /* DoraemonCrashSignalExceptionHandler.m */; };
-		7C3B7D4B26758ACB005286D3 /* KSCrash in Frameworks */ = {isa = PBXBuildFile; productRef = 7C3B7D4A26758ACB005286D3 /* KSCrash */; };
-		7C3B7D4F26758AD9005286D3 /* CrashReporter in Frameworks */ = {isa = PBXBuildFile; productRef = 7C3B7D4E26758AD9005286D3 /* CrashReporter */; };
+		7C3EEEFE2697F76C007D8694 /* CrashTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EEEFB2697F76A007D8694 /* CrashTool.m */; };
+		7C3EEEFF2697F76C007D8694 /* CrashSignalExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */; };
+		7CE671FC2679A8B700DADCDA /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE671FB2679A8B700DADCDA /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23C62AB98891B25235DA0C34 /* libPods-demoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-demoCrash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2E814E267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCrashSignalExceptionHandler.swift; sourceTree = "<group>"; };
 		7C3B7D21267588B8005286D3 /* demoCrash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoCrash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3B7D24267588B8005286D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C3B7D28267588B8005286D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,12 +30,14 @@
 		7C3B7D30267588B9005286D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C3B7D32267588B9005286D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C3B7D392675897E005286D3 /* demoCrash-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "demoCrash-Bridging-Header.h"; sourceTree = "<group>"; };
-		7C3B7D3A2675897F005286D3 /* DoraemonCrashTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoraemonCrashTool.m; sourceTree = "<group>"; };
-		7C3B7D3B2675897F005286D3 /* DoraemonCrashSignalExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoraemonCrashSignalExceptionHandler.h; sourceTree = "<group>"; };
-		7C3B7D3C2675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoraemonCrashUncaughtExceptionHandler.m; sourceTree = "<group>"; };
-		7C3B7D3D2675897F005286D3 /* DoraemonCrashTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoraemonCrashTool.h; sourceTree = "<group>"; };
-		7C3B7D3E2675897F005286D3 /* DoraemonCrashSignalExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoraemonCrashSignalExceptionHandler.m; sourceTree = "<group>"; };
-		7C3B7D3F2675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoraemonCrashUncaughtExceptionHandler.h; sourceTree = "<group>"; };
+		7C3EEEFA2697F768007D8694 /* CrashSignalExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashSignalExceptionHandler.h; sourceTree = "<group>"; };
+		7C3EEEFB2697F76A007D8694 /* CrashTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashTool.m; sourceTree = "<group>"; };
+		7C3EEEFC2697F76B007D8694 /* CrashTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashTool.h; sourceTree = "<group>"; };
+		7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashSignalExceptionHandler.m; sourceTree = "<group>"; };
+		7CE671FA2679A8B700DADCDA /* NextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		7CE671FB2679A8B700DADCDA /* NextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
+		A979034C9E01ECDA514CEFD7 /* Pods-demoCrash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoCrash.release.xcconfig"; path = "Target Support Files/Pods-demoCrash/Pods-demoCrash.release.xcconfig"; sourceTree = "<group>"; };
+		FE4DC7F4DF913D365EEF41C3 /* Pods-demoCrash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoCrash.debug.xcconfig"; path = "Target Support Files/Pods-demoCrash/Pods-demoCrash.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,8 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C3B7D4B26758ACB005286D3 /* KSCrash in Frameworks */,
-				7C3B7D4F26758AD9005286D3 /* CrashReporter in Frameworks */,
+				653E55CE3EF1F686E9B6D9E1 /* libPods-demoCrash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +57,8 @@
 			children = (
 				7C3B7D23267588B8005286D3 /* demoCrash */,
 				7C3B7D22267588B8005286D3 /* Products */,
+				96A0A116CE22B5147DA6D454 /* Pods */,
+				82C41A0845AC79C563F7B49C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,9 +73,15 @@
 		7C3B7D23267588B8005286D3 /* demoCrash */ = {
 			isa = PBXGroup;
 			children = (
-				7C3B7D44267589C1005286D3 /* DoraemonCrash */,
+				7C2E814E267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift */,
 				7C3B7D24267588B8005286D3 /* AppDelegate.swift */,
 				7C3B7D28267588B8005286D3 /* ViewController.swift */,
+				7CE671FA2679A8B700DADCDA /* NextViewController.h */,
+				7CE671FB2679A8B700DADCDA /* NextViewController.m */,
+				7C3EEEFA2697F768007D8694 /* CrashSignalExceptionHandler.h */,
+				7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */,
+				7C3EEEFC2697F76B007D8694 /* CrashTool.h */,
+				7C3EEEFB2697F76A007D8694 /* CrashTool.m */,
 				7C3B7D2A267588B8005286D3 /* Main.storyboard */,
 				7C3B7D2D267588B9005286D3 /* Assets.xcassets */,
 				7C3B7D2F267588B9005286D3 /* LaunchScreen.storyboard */,
@@ -80,17 +91,21 @@
 			path = demoCrash;
 			sourceTree = "<group>";
 		};
-		7C3B7D44267589C1005286D3 /* DoraemonCrash */ = {
+		82C41A0845AC79C563F7B49C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C3B7D3B2675897F005286D3 /* DoraemonCrashSignalExceptionHandler.h */,
-				7C3B7D3E2675897F005286D3 /* DoraemonCrashSignalExceptionHandler.m */,
-				7C3B7D3D2675897F005286D3 /* DoraemonCrashTool.h */,
-				7C3B7D3A2675897F005286D3 /* DoraemonCrashTool.m */,
-				7C3B7D3F2675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.h */,
-				7C3B7D3C2675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.m */,
+				23C62AB98891B25235DA0C34 /* libPods-demoCrash.a */,
 			);
-			path = DoraemonCrash;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96A0A116CE22B5147DA6D454 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE4DC7F4DF913D365EEF41C3 /* Pods-demoCrash.debug.xcconfig */,
+				A979034C9E01ECDA514CEFD7 /* Pods-demoCrash.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,19 +115,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C3B7D35267588B9005286D3 /* Build configuration list for PBXNativeTarget "demoCrash" */;
 			buildPhases = (
+				1F271BA619CF16C92215D80F /* [CP] Check Pods Manifest.lock */,
 				7C3B7D1D267588B8005286D3 /* Sources */,
 				7C3B7D1E267588B8005286D3 /* Frameworks */,
 				7C3B7D1F267588B8005286D3 /* Resources */,
+				7F06BA3B3EDFF038E52DD9D9 /* [CP] Embed Pods Frameworks */,
+				F62E8C9067EBDD29B9FE7260 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = demoCrash;
-			packageProductDependencies = (
-				7C3B7D4A26758ACB005286D3 /* KSCrash */,
-				7C3B7D4E26758AD9005286D3 /* CrashReporter */,
-			);
 			productName = demoCrash;
 			productReference = 7C3B7D21267588B8005286D3 /* demoCrash.app */;
 			productType = "com.apple.product-type.application";
@@ -141,10 +155,6 @@
 				Base,
 			);
 			mainGroup = 7C3B7D18267588B8005286D3;
-			packageReferences = (
-				7C3B7D4926758ACB005286D3 /* XCRemoteSwiftPackageReference "KSCrash" */,
-				7C3B7D4D26758AD9005286D3 /* XCRemoteSwiftPackageReference "plcrashreporter" */,
-			);
 			productRefGroup = 7C3B7D22267588B8005286D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -167,16 +177,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F271BA619CF16C92215D80F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-demoCrash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F06BA3B3EDFF038E52DD9D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F62E8C9067EBDD29B9FE7260 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7C3B7D1D267588B8005286D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7C3B7D29267588B8005286D3 /* ViewController.swift in Sources */,
-				7C3B7D422675897F005286D3 /* DoraemonCrashSignalExceptionHandler.m in Sources */,
+				7C3EEEFF2697F76C007D8694 /* CrashSignalExceptionHandler.m in Sources */,
+				7C3EEEFE2697F76C007D8694 /* CrashTool.m in Sources */,
+				7CE671FC2679A8B700DADCDA /* NextViewController.m in Sources */,
 				7C3B7D25267588B8005286D3 /* AppDelegate.swift in Sources */,
-				7C3B7D402675897F005286D3 /* DoraemonCrashTool.m in Sources */,
-				7C3B7D412675897F005286D3 /* DoraemonCrashUncaughtExceptionHandler.m in Sources */,
+				7C2E814F267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,11 +390,14 @@
 		};
 		7C3B7D36267588B9005286D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE4DC7F4DF913D365EEF41C3 /* Pods-demoCrash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = PK4EEXA626;
 				INFOPLIST_FILE = demoCrash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,6 +406,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = chenbing.demoCrash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match2 Development *";
 				SWIFT_OBJC_BRIDGING_HEADER = "demoCrash/demoCrash-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -342,11 +416,14 @@
 		};
 		7C3B7D37267588B9005286D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A979034C9E01ECDA514CEFD7 /* Pods-demoCrash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = PK4EEXA626;
 				INFOPLIST_FILE = demoCrash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -355,6 +432,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = chenbing.demoCrash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match2 Development *";
 				SWIFT_OBJC_BRIDGING_HEADER = "demoCrash/demoCrash-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -383,38 +461,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7C3B7D4926758ACB005286D3 /* XCRemoteSwiftPackageReference "KSCrash" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kstenerud/KSCrash.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.25;
-			};
-		};
-		7C3B7D4D26758AD9005286D3 /* XCRemoteSwiftPackageReference "plcrashreporter" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/microsoft/plcrashreporter.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7C3B7D4A26758ACB005286D3 /* KSCrash */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C3B7D4926758ACB005286D3 /* XCRemoteSwiftPackageReference "KSCrash" */;
-			productName = KSCrash;
-		};
-		7C3B7D4E26758AD9005286D3 /* CrashReporter */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C3B7D4D26758AD9005286D3 /* XCRemoteSwiftPackageReference "plcrashreporter" */;
-			productName = CrashReporter;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7C3B7D19267588B8005286D3 /* Project object */;
 }

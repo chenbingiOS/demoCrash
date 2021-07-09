@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/DoraemonKit/DoraemonKit.bundle
+${PODS_ROOT}/GCDWebServer/GCDWebUploader/GCDWebUploader.bundle
+${PODS_ROOT}/YYDebugDatabase/DebugDatabase/Web.bundle

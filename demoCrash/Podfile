@@ -1,9 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '11.0'
 
-# 
-
-
 # 忽略 pod 库警告
 inhibit_all_warnings!
 DEBUG_NO_LABKIT = 0
@@ -12,188 +9,24 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'http://techgit.meitu.com/iosmodules/specs.git'
 source 'http://techgit.meitu.com/iOSModules_public/specs.git'
 
-def debug_tools
-    # 开发调试工具
-    pod 'MTDebugOptions', :git=>'git@techgit.meitu.com:iosmodules/MTDebugOptions.git', :branch => 'release/2.0.6_eve', :modular_headers => true
-    # 统计log可视化
-    pod 'MTAnalyticsDebugger', :git => 'git@techgit.meitu.com:iOSModules/MTAnalyticsDebugger', :tag => '1.0.4', :modular_headers => true
+
+target 'demoCrash' do
+
+    # 微软崩溃工具
+    pod 'KSCrash'
+
+    # 微软崩溃工具
+    pod 'PLCrashReporter'
+
     # 滴滴开源开发辅助工具DoKit WithMLeaksFinder
-    pod 'DoraemonKit/Core', '~> 3.0.0', :configurations => ['Debug', 'Release'], :modular_headers => true #Required
-    #pod 'DoraemonKit/WithLoad', '~> 3.0.0', :configurations => ['Debug', 'Release'], :modular_headers => true #Optional
-    pod 'DoraemonKit/WithLogger', '~> 3.0.0', :configurations => ['Debug', 'Release'], :modular_headers => true #Optional
-    pod 'DoraemonKit/WithDatabase', '~> 3.0.0', :configurations => ['Debug', 'Release'], :modular_headers => true #Optional
-    pod 'DoraemonKit/WithMLeaksFinder', '~> 3.0.0', :configurations => ['Debug', 'Release'], :modular_headers => true #Optional
-end
+    pod 'DoraemonKit/Core'
+    pod 'DoraemonKit/WithLoad'
+    pod 'DoraemonKit/WithLogger'
+    pod 'DoraemonKit/WithDatabase'
+    pod 'DoraemonKit/WithMLeaksFinder'
 
-def swift
-    pod 'SnapKit', '~> 5.0.0'
-    pod 'Alamofire', '5.0.0-rc.2'
-    # 相册
-    pod 'TLPhotoPicker'
-    # 数据库
-    pod 'Realm', '3.17.3', :modular_headers => true
-    pod 'RealmSwift'
-    # 日志库
-    pod 'CocoaLumberjack', '3.6.0', :modular_headers => true
-    # 气泡控件
-    pod 'AMPopTip'
-    # 设备信息库
-    pod 'DeviceKit', '~> 3.0'
-    # airbnb动画库
-    pod 'lottie-ios'
-    pod 'IQKeyboardManagerSwift'
-end
-
-target 'MTEve' do
-  # Comment the next line if you don't want to use dynamic frameworks
-    debug_tools
-  swift
-    ############## 公司 Pods
-  
-    
-    # 皮肤库底层
-    pod 'libmtskincomponentbin', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtskincomponentbin.git', :tag => '1.0.64'
-    pod 'MTWrinkleSDK', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtwrinklesdk.git', :tag => '2.3.16'
-    pod 'MTEyeBrowLineSDK', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/libmtskineyebrowline.git', :tag => '1.0.11'
-    pod 'libMTSkinTearTrough', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/libmtskinteartrough.git', :branch => 'feature/podspec_fix'
-    pod 'libMTPoreDetection', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtporesdk.git', :tag => '0.2.2.3'
-    pod 'libMTSkinAge', :git =>'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/libmtskinage.git', :tag => 'v2.6', :subspecs => ['framework', 'resources']
-    
-    # 皮肤库中间层
-    pod 'libMTEveEngine', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mteveengine.git', :tag => '2.3.0.4'
-    pod 'libMTProtocolComponent', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtprotocolcomponent.git', :tag => '0.1.8.0'
-    pod 'libMTPhotoSegmentComponent', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtphotosegmentcomponent.git', :tag => '0.1.2.3'
-    pod 'libMTFaceComponent', :git => 'git@techgit.meitu.com:MTlabBinarys/MTlabEveBinarys/mtfacecomponent.git', :tag => '0.1.4.0'
-    
-    if DEBUG_NO_LABKIT == 1
-      
-        # 美颜底层库
-        pod 'libmtrteffectcore/common', :git => 'http://techgit.meitu.com/iOSModules_public/libmtrteffectcore.git', :branch => 'feature/dyz/0.0.10.0-SkinAgeOpt'
-      
-        # (分割/测肤 pod依赖)
-        pod 'libmanis', :git => 'git@techgit.meitu.com:MTlabBinarys/libManis.git', :tag => '3.0.6.3'
-        # 测肤 符号依赖
-        pod 'libopencv' , :git => 'git@techgit.meitu.com:MTlabBinarys/3rdpartyBinary/libopencv.git', :branch => '3.4.5.2'
-        # 底层base库 测肤 符号依赖
-        pod 'libmtlab-base', :git => 'git@techgit.meitu.com:MTlabBinarys/libmtlab-base.git', :tag =>'0.0.30.0'
-        # static library for mtcvlite (分割 pod依赖)
-        pod 'libmtcvlite', :git => 'git@techgit.meitu.com:MTlabBinarys/libmtcvlite.git', :tag => '0.2.2.3'
-        # libraries for mt-image （分割 pod依赖）
-        pod 'libmtimage', :git => 'git@techgit.meitu.com:MTlabBinarys/libmtimage.git', :tag => '1.0.2.1'
-        # 拍后图像分割库(测肤底层库 pod依赖)
-        pod 'mtphotosegment_pod', :git => 'git@techgit.meitu.com:MTlabBinarys/libMTPhotoSegment.git', :tag => '2.5.3.15'
-        # 肢体、带检测分割分割 等项目会用到的检测
-#        pod 'mtphotodetector_pod', :git => 'git@techgit.meitu.com:MTlabBinarys/libmtphotodetector.git', :tag => '0.0.5.14'
-        
-        pod 'libNativeDetectFrameWork', :git => 'git@techgit.meitu.com:MTlabBinarys/libNativeDetectFrameWork.git', :tag => '3.9.1.0-eve', :subspecs => ['core_head','NativeDetectFrameWork']
-        
-        # 五官分析库
-        pod 'libDetectFrameWork', :git => 'git@techgit.meitu.com:MTlabBinarys/libDetectFrameworkBase.git', :tag => '0.3.8.1'
-        
-        pod 'libmtaiinterface', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libmtai.git', :tag => '0.4.x.x-release-2.1-eve', :modular_headers => true
-        pod 'libMTlicense', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabKit/libMTlabKit.git', :tag => "feature/2.0.2.0_eve", :subspecs => ['head', 'yingzitech']
-
-    else
-
-        pod 'libmtrteffectcore/meiye', :git => 'http://techgit.meitu.com/iOSModules_public/libmtrteffectcore.git', :branch => 'feature/dyz/0.0.10.0-SkinAgeOpt'
-
-        pod 'libNativeDetectFrameWork', :git => 'git@techgit.meitu.com:MTlabBinarys/libNativeDetectFrameWork.git', :tag => '3.9.1.0-eve', :subspecs => ['core_head','NativeDetectFrameWork_tob']
-
-        mtlabkit_version="2.0.3.2-eve";
-        pod 'libMTlabKit', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libMTlabKitMP.git', :tag => mtlabkit_version, :subspecs => ['core', 'SegmentPhotoSkin_old', 'FaceAge', 'FaceDetector', 'FaceEmotion', 'FaceFAHeavy', 'FaceFALight', 'FaceFAMedium', 'FaceFD', 'FaceGender', 'FaceGlasses', 'FaceRefineEyes', 'FaceRefineMouth', 'FaceFR', 'DetectFrameWorkRootConfig_old'], :modular_headers => true
-        pod 'libMTlicense', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabKit/libMTlabKit.git', :tag => mtlabkit_version, :subspecs => ['head', 'General']
-        pod 'MTFace', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libMTlabKitMP.git', :tag => mtlabkit_version
-        pod 'libDetectFrameWork', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libMTlabKitMP.git', :branch => mtlabkit_version
-        pod 'libmanis', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libMTlabKitMP.git', :tag => mtlabkit_version
-        pod 'libyuv', :git=>'git@techgit.meitu.com:MTlabBinarys/MTlabSDK/libMTlabKitMP.git', :tag => mtlabkit_version
-
-    end
-    
-    
-   # 通用路由组件
-    pod 'MTRouteComponent', :git => 'git@techgit.meitu.com:iosmodules/MTRouteComponent.git', :tag => '1.0.3', :modular_headers => true
-    # UIKit扩展
-    pod 'MTUIKit/UIDevice+IDFA', '~> 0.5.4', :modular_headers => true
-    # 基于 Github 上的 Reachability，参照apple官方文档做 IPv6 兼容处理
-    pod 'Reachability', :git => 'http://techgit.meitu.com/iosmodules/Reachability.git', :tag => 'v3.2.1', :modular_headers => true
-
-    # 基于系统 UIKit 扩展
-    pod 'MTUIKit/UIDevice+Categories', '~> 0.5.9', :modular_headers => true
-    # 左中右三张RGB图，生成一张UV贴图及模型
-    pod 'libMake3DMMUV', :git => 'git@techgit.meitu.com:MT3DFaceBinarys/libmake3dmmuv.git', :tag => '0.1.2.9'
-    pod 'LibMT3DFace', :git => 'git@techgit.meitu.com:MT3DFaceBinarys/LibMT3DFace.git', :tag => '0.1.3.2'
-
-#    # DIS光流
-    pod 'libmtdis', :git => 'git@techgit.meitu.com:mtphonecameratech/libmtdis.git', :tag => '0.0.3-podspec', :modular_headers => true
-#
-#    # 颜色校正库
-    pod 'libSkinToneMapping', :git => 'http://techgit.meitu.com/MTlabBinarys/MTlabEveBinarys/libKievColorCorrection.git', :tag => '0.0.3', :subspecs => ['core_static'], :modular_headers => true
-  
-
-    pod 'GPUImage', :git => 'http://techgit.meitu.com/iOSModules_public/GPUImage.git', :tag => '0.1.7.2.2'
-    
-    # 测肤仪
-#    pod 'MTSeineKit', :path => '../MTSeineKit/', :modular_headers => true
-    pod 'MTSeineKit', :git => 'git@techgit.meitu.com:cyc4/MTSeineKit.git', :branch => 'feature/1.1.0_bugfix', :modular_headers => true
-    pod 'CocoaAsyncSocket', :modular_headers => true
-    pod 'libMTPlayer', :git => 'git@techgit.meitu.com:flymedia/libMTPlayer.git', :tag => '1.13.2', :modular_headers => true
-    pod 'FFmpegBinaries', :git => 'git@techgit.meitu.com:flymedia/ffmpeg-binaries.git', :branch => 'feature/ffmpeg-3.1.2_common', :modular_headers => true
-    
-    # 公共组件
-    # MTWebKit组件
-    pod 'MTWebKit', '2.1.6.1', :modular_headers => true
-   
-    # 美图统计 SDK
-    pod 'MTAnalytics', :git => 'git@techgit.meitu.com:iosmodules/MTAnalytics.git', :tag => '4.9.3', :modular_headers => true
-   
-    # 美图云上传组件
-    pod 'MTResourceUpload', :git => 'http://techgit.meitu.com/iosmodules/MTResourceUpload.git', :tag => '1.3.33', :modular_headers => true
-
-    # AppStore审核开关自动化
-    pod 'MTAppStoreRequest', '~> 1.0.1', :modular_headers => true
-   
-    # 网络异常检测工具
-    pod 'MTNetworkCheck', :git => 'git@techgit.meitu.com:imakeup/mtnetworkcheck.git', :tag => '1.0.5', :modular_headers => true
-    # 高性能通用 key-value 组件
-    pod 'MMKV', :modular_headers => true
-    # IconFont
-    pod 'MTIconFont', :git => 'git@techgit.meitu.com:ibeautycamlab/MTIconFont.git', :tag => '0.2.3_Eve', :modular_headers => true
-
-    ############## 开源 Pods
-        
-    pod 'SDWebImage', '4.4.6', :modular_headers => true
-    pod 'SDWebImage/GIF', '4.4.6',:modular_headers => true
-    pod 'SDWebImage/WebP', '4.4.6',:modular_headers => true
-    # 响应式编程(FRP)框架
-    pod 'ReactiveObjC','3.1.0', :modular_headers => true
-    # UILabel 自定义扩展
-    pod 'THLabel', :modular_headers => true
-    # UI 布局库
-    pod 'Masonry', '~> 0.6.2', :modular_headers => true
-    # UIView frame 便捷访问扩展
-    pod 'FrameAccessor', '~> 1.3.2', :modular_headers => true
-    # 解压缩 zip
-    pod 'ZipArchive', '~> 1.4.0', :modular_headers => true
-    # 图片库（MTLoadingView依赖）
-    pod 'YYImage/WebP', :modular_headers => true
-    # 支持 Block 语法的 UIAlertView
-    pod 'UIAlertView-Blocks', '~> 1.0'
-    # 腾讯崩溃收集
-    pod 'Bugly', :modular_headers => true
-    # facebook动画库
-    pod 'pop', '~> 1.0', :modular_headers => true
-    # peertalk
-    pod 'PeerTalk',:git =>'git@techgit.meitu.com:imakeup/peertalk.git', :tag=> '0.0.2', :modular_headers => true
-
-    # 球形进度条
-    pod 'DACircularProgress', :modular_headers => true
-    # AFNetworking
-    pod 'AFNetworking', '~> 4.0.0', :modular_headers => true
     # Firebase统计
     pod 'Firebase', '6.15.0', :subspecs => ['Analytics', 'Crashlytics'],  :modular_headers => true
-    # 新压缩库，高星，swift。弃用ZipArchive，其6年未更，接口设计不合理
-    pod 'ZIPFoundation', '~> 0.9.11'
-    #    pod 'MTEve', :path => './MTEve.podspec', :modular_headers => true
 end
 
 # 为解决模拟器环境本地库下.a编译报错：building for iOS Simulator, but linking in object file built for iOS, for architecture arm64
@@ -207,7 +40,6 @@ post_install do |installer|
     end
   end
 end
-
 
 #target 'MTEveApp' do
 #  pod 'Realm', '3.17.3', :modular_headers => true
