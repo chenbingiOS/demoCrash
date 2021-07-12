@@ -31,8 +31,8 @@ func signalHandler(signal: Int32) -> Void {
     }
     
     print(stackTrace)
-    
-    DoraemonCrashTool.saveCrashLog(stackTrace, fileName: "SwiftCrash(singal)")
+        
+    CrashTool.saveCrashLog(stackTrace, fileName: "SwiftCrash(singal)")
     
     unregisterSignalHandler();
     

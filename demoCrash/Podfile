@@ -13,17 +13,13 @@ source 'http://techgit.meitu.com/iOSModules_public/specs.git'
 target 'demoCrash' do
 
     # 微软崩溃工具
-    pod 'KSCrash'
+    pod 'KSCrash' ,  :modular_headers => true
 
     # 微软崩溃工具
-    pod 'PLCrashReporter'
+    pod 'PLCrashReporter' ,  :modular_headers => true
 
     # 滴滴开源开发辅助工具DoKit WithMLeaksFinder
-    pod 'DoraemonKit/Core'
-    pod 'DoraemonKit/WithLoad'
-    pod 'DoraemonKit/WithLogger'
-    pod 'DoraemonKit/WithDatabase'
-    pod 'DoraemonKit/WithMLeaksFinder'
+    pod 'DoraemonKit' ,  :modular_headers => true
 
     # Firebase统计
     pod 'Firebase', '6.15.0', :subspecs => ['Analytics', 'Crashlytics'],  :modular_headers => true

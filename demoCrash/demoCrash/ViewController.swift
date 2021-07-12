@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     // pro hand -p true -s false SIGABRT
@@ -15,6 +16,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if CrashStateManager.getIsCrashState() {
+            // 2分钟内，恢复拍照页面
+            if CrashStateManager.withinTwoMinutesCrash() {
+                self.navigationController?.pushViewController(NextViewController(), animated: false);
+            }
+            // 上传报告
+            DispatchQueue.global().async {
+                print("async do something\(Thread.current)")
+                print("上传历史图片")
+                DispatchQueue.main.async {
+                    print("历史图片上传成功")
+                }
+            }
+            // 本次崩溃处理结束
+            CrashStateManager.setIsCrashState(false);
+        }
     }
 
     

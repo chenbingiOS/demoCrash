@@ -10,6 +10,7 @@
 #import <execinfo.h>
 
 #import "CrashTool.h"
+#import "CrashStateManager.h"
 
 typedef void (*SignalHandler)(int signal, siginfo_t *info, void *context);
 
@@ -136,7 +137,10 @@ static void CrashSignalHandler(int signal, siginfo_t* info, void* context) {
     // 保存崩溃日志到沙盒cache目录
     NSString *path = [NSString stringWithString:mstr];
     [CrashTool saveCrashLog:path fileName:@"Crash(Signal)"];
-        
+    // 记录此次崩溃
+    [CrashStateManager setIsCrashState:YES];
+    
+#if DEBUG
     CFRunLoopRef runloop = CFRunLoopGetCurrent();
     CFArrayRef allmodes  = CFRunLoopCopyAllModes(runloop);
     
@@ -157,12 +161,15 @@ static void CrashSignalHandler(int signal, siginfo_t* info, void* context) {
         [topRootViewController presentViewController:alert animated:YES completion:nil];
     });
     
-    // 起死回生
+    // 暂时活着
     while (!dismissed) {
         for (NSString *mode in (__bridge NSArray *)allmodes) {
             CFRunLoopRunInMode((CFStringRef)mode, 0.0001, false);
         }
     }
+#else
+    
+#endif
     
     CFRelease(runloop);
     

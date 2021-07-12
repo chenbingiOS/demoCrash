@@ -16,6 +16,7 @@
 		7C3B7D31267588B9005286D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3B7D2F267588B9005286D3 /* LaunchScreen.storyboard */; };
 		7C3EEEFE2697F76C007D8694 /* CrashTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EEEFB2697F76A007D8694 /* CrashTool.m */; };
 		7C3EEEFF2697F76C007D8694 /* CrashSignalExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */; };
+		7CA19A7A269829610020556F /* CrashStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A79269829610020556F /* CrashStateManager.m */; };
 		7CE671FC2679A8B700DADCDA /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE671FB2679A8B700DADCDA /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,8 @@
 		7C3EEEFB2697F76A007D8694 /* CrashTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashTool.m; sourceTree = "<group>"; };
 		7C3EEEFC2697F76B007D8694 /* CrashTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashTool.h; sourceTree = "<group>"; };
 		7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashSignalExceptionHandler.m; sourceTree = "<group>"; };
+		7CA19A78269829610020556F /* CrashStateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashStateManager.h; sourceTree = "<group>"; };
+		7CA19A79269829610020556F /* CrashStateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashStateManager.m; sourceTree = "<group>"; };
 		7CE671FA2679A8B700DADCDA /* NextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
 		7CE671FB2679A8B700DADCDA /* NextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 		A979034C9E01ECDA514CEFD7 /* Pods-demoCrash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoCrash.release.xcconfig"; path = "Target Support Files/Pods-demoCrash/Pods-demoCrash.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 				7C3B7D28267588B8005286D3 /* ViewController.swift */,
 				7CE671FA2679A8B700DADCDA /* NextViewController.h */,
 				7CE671FB2679A8B700DADCDA /* NextViewController.m */,
+				7CA19A78269829610020556F /* CrashStateManager.h */,
+				7CA19A79269829610020556F /* CrashStateManager.m */,
 				7C3EEEFA2697F768007D8694 /* CrashSignalExceptionHandler.h */,
 				7C3EEEFD2697F76C007D8694 /* CrashSignalExceptionHandler.m */,
 				7C3EEEFC2697F76B007D8694 /* CrashTool.h */,
@@ -119,7 +124,6 @@
 				7C3B7D1D267588B8005286D3 /* Sources */,
 				7C3B7D1E267588B8005286D3 /* Frameworks */,
 				7C3B7D1F267588B8005286D3 /* Resources */,
-				7F06BA3B3EDFF038E52DD9D9 /* [CP] Embed Pods Frameworks */,
 				F62E8C9067EBDD29B9FE7260 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -200,23 +204,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F06BA3B3EDFF038E52DD9D9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demoCrash/Pods-demoCrash-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F62E8C9067EBDD29B9FE7260 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +232,7 @@
 				7C3EEEFF2697F76C007D8694 /* CrashSignalExceptionHandler.m in Sources */,
 				7C3EEEFE2697F76C007D8694 /* CrashTool.m in Sources */,
 				7CE671FC2679A8B700DADCDA /* NextViewController.m in Sources */,
+				7CA19A7A269829610020556F /* CrashStateManager.m in Sources */,
 				7C3B7D25267588B8005286D3 /* AppDelegate.swift in Sources */,
 				7C2E814F267B3DA600E36AA7 /* SwiftCrashSignalExceptionHandler.swift in Sources */,
 			);

@@ -3,6 +3,7 @@
 //
 
 
-#import "DoraemonCrashSignalExceptionHandler.h"
-#import "DoraemonCrashTool.h"
-#import "DoraemonCrashUncaughtExceptionHandler.h"
+#import "CrashStateManager.h"
+#import "CrashSignalExceptionHandler.h"
+#import "CrashTool.h"
+#import "NextViewController.h"

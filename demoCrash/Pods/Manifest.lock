@@ -1,24 +1,11 @@
 PODS:
-  - CocoaLumberjack (3.7.2):
-    - CocoaLumberjack/Core (= 3.7.2)
-  - CocoaLumberjack/Core (3.7.2)
+  - DoraemonKit (3.0.7):
+    - DoraemonKit/Core (= 3.0.7)
   - DoraemonKit/Core (3.0.7):
     - FMDB
     - GCDWebServer
     - GCDWebServer/WebDAV
     - GCDWebServer/WebUploader
-  - DoraemonKit/WithDatabase (3.0.7):
-    - DoraemonKit/Core
-    - YYDebugDatabase
-  - DoraemonKit/WithLoad (3.0.7):
-    - DoraemonKit/Core
-  - DoraemonKit/WithLogger (3.0.7):
-    - CocoaLumberjack
-    - DoraemonKit/Core
-  - DoraemonKit/WithMLeaksFinder (3.0.7):
-    - DoraemonKit/Core
-    - FBRetainCycleDetector
-  - FBRetainCycleDetector (0.1.4)
   - Firebase/Analytics (6.15.0):
     - Firebase/Core
   - Firebase/Core (6.15.0):
@@ -178,16 +165,9 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PLCrashReporter (1.9.0)
   - PromisesObjC (1.2.12)
-  - YYDebugDatabase (2.1.0):
-    - FMDB
-    - GCDWebServer
 
 DEPENDENCIES:
-  - DoraemonKit/Core
-  - DoraemonKit/WithDatabase
-  - DoraemonKit/WithLoad
-  - DoraemonKit/WithLogger
-  - DoraemonKit/WithMLeaksFinder
+  - DoraemonKit
   - Firebase/Analytics (= 6.15.0)
   - Firebase/Crashlytics (= 6.15.0)
   - KSCrash
@@ -195,9 +175,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - CocoaLumberjack
     - DoraemonKit
-    - FBRetainCycleDetector
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -217,12 +195,9 @@ SPEC REPOS:
     - nanopb
     - PLCrashReporter
     - PromisesObjC
-    - YYDebugDatabase
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   DoraemonKit: 32fb97f3aa82efa133111d193080ca5462cef135
-  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
   FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -242,8 +217,7 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PLCrashReporter: cd91ab81f068647167a8c8f09fe3b68eef9639e6
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  YYDebugDatabase: e684a7f79fca2e3673a23347cefb822f911f3124
 
-PODFILE CHECKSUM: 21dd0aec5ad915c3398d8776cb6b6fc06defbc39
+PODFILE CHECKSUM: 1ed77126f7473584547fafeff56d86a0701fb0d4
 
 COCOAPODS: 1.10.1
