@@ -7,3 +7,4 @@
 #import "CrashSignalExceptionHandler.h"
 #import "CrashTool.h"
 #import "NextViewController.h"
+#import "CrashUncaughtExceptionHandler.h"

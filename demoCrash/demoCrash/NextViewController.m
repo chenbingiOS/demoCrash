@@ -6,6 +6,8 @@
 //
 
 #import "NextViewController.h"
+#import "fishhook.h"
+#import "CrashTool.h"
 
 @interface NextViewController ()
 
@@ -18,6 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    struct rebinding nsLog;
+    nsLog.name = "NSLog";
+    nsLog.replacement = nNSLog;
+    nsLog.replaced = (void *)&oNSLog;
+    struct rebinding rebinds[1] = {nsLog};
+    rebind_symbols(rebinds, 1);
+}
+
+static void (* oNSLog)(NSString *format, ...);
+void nNSLog(NSString *format, ...) {
+    oNSLog(@"%@",[format stringByAppendingString:@"被HOOK了"]);
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"测试");
 }
 
 - (IBAction)actionCrashMalloc:(id)sender {
@@ -38,6 +55,8 @@
 - (IBAction)actionCrashArray:(id)sender {
     NSArray *ary = @[@"1", @"2"];
     NSLog(@"%@", ary[3]);
+    
+    
 }
 
 - (IBAction)actionCrashNotMethodString:(id)sender {

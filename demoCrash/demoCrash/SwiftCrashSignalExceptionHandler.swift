@@ -32,7 +32,7 @@ func signalHandler(signal: Int32) -> Void {
     
     print(stackTrace)
         
-    CrashTool.saveCrashLog(stackTrace, fileName: "SwiftCrash(singal)")
+//    CrashTool.saveCrashLog(stackTrace, fileName: "SwiftCrash(singal)")
     
     unregisterSignalHandler();
     

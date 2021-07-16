@@ -10,7 +10,6 @@
 #import <execinfo.h>
 
 #import "CrashTool.h"
-#import "CrashStateManager.h"
 
 typedef void (*SignalHandler)(int signal, siginfo_t *info, void *context);
 
@@ -111,67 +110,9 @@ static void CrashSignalRegister(int signal) {
 
 #pragma mark SignalCrash Handler
 
-static void CrashSignalHandler(int signal, siginfo_t* info, void* context) {
-    NSMutableString *mstr = [[NSMutableString alloc] init];
-    [mstr appendString:@"Signal Exception:\n"];
-    [mstr appendString:[NSString stringWithFormat:@"Signal %@ was raised.\n", signalName(signal)]];
-    [mstr appendString:@"Call Stack:\n"];
+static void CrashSignalHandler(int signal, siginfo_t * info, void * context) {
     
-    //    void* callstack[128];
-    //    int i, frames = backtrace(callstack, 128);
-    //    char** strs = backtrace_symbols(callstack, frames);
-    //    for (i = 0; i <frames; ++i) {
-    //        [mstr appendFormat:@"%s\n", strs[i]];
-    //    }
-    
-    // 这里过滤掉第一行日志
-    // 因为注册了信号崩溃回调方法，系统会来调用，将记录在调用堆栈上，因此此行日志需要过滤掉
-    for (NSUInteger index = 1; index < NSThread.callStackSymbols.count; index++) {
-        NSString *str = [NSThread.callStackSymbols objectAtIndex:index];
-        [mstr appendString:[str stringByAppendingString:@"\n"]];
-    }
-    
-    [mstr appendString:@"threadInfo:\n"];
-    [mstr appendString:[[NSThread currentThread] description]];
-    
-    // 保存崩溃日志到沙盒cache目录
-    NSString *path = [NSString stringWithString:mstr];
-    [CrashTool saveCrashLog:path fileName:@"Crash(Signal)"];
-    // 记录此次崩溃
-    [CrashStateManager setIsCrashState:YES];
-    
-#if DEBUG
-    CFRunLoopRef runloop = CFRunLoopGetCurrent();
-    CFArrayRef allmodes  = CFRunLoopCopyAllModes(runloop);
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Crash(Signal)" message:path preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *conform = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"点击了确认按钮");
-            dismissed = YES;
-        }];
-        [alert addAction:conform];
-        UIViewController *topRootViewController = [[UIApplication  sharedApplication] keyWindow].rootViewController;
-        // 在这里加一个这个样式的循环
-        while (topRootViewController.presentedViewController) {
-            // 这里固定写法
-          topRootViewController = topRootViewController.presentedViewController;
-        }
-        // 然后再进行present操作
-        [topRootViewController presentViewController:alert animated:YES completion:nil];
-    });
-    
-    // 暂时活着
-    while (!dismissed) {
-        for (NSString *mode in (__bridge NSArray *)allmodes) {
-            CFRunLoopRunInMode((CFStringRef)mode, 0.0001, false);
-        }
-    }
-#else
-    
-#endif
-    
-    CFRelease(runloop);
+    [CrashTool handlerSignalException:signal];
     
     ClearSignalRigister();
     
@@ -179,41 +120,6 @@ static void CrashSignalHandler(int signal, siginfo_t* info, void* context) {
     previousSignalHandler(signal, info, context);
     
     kill(getpid(), SIGKILL);
-}
-
-#pragma mark Signal To Name
-
-static NSString *signalName(int signal) {
-    NSString *signalName;
-    switch (signal) {
-        case SIGABRT:
-            signalName = @"SIGABRT";
-            break;
-        case SIGBUS:
-            signalName = @"SIGBUS";
-            break;
-        case SIGFPE:
-            signalName = @"SIGFPE";
-            break;
-        case SIGILL:
-            signalName = @"SIGILL";
-            break;
-        case SIGPIPE:
-            signalName = @"SIGPIPE";
-            break;
-        case SIGSEGV:
-            signalName = @"SIGSEGV";
-            break;
-        case SIGSYS:
-            signalName = @"SIGSYS";
-            break;
-        case SIGTRAP:
-            signalName = @"SIGTRAP";
-            break;
-        default:
-            break;
-    }
-    return signalName;
 }
 
 #pragma mark Previous Signal

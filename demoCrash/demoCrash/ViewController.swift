@@ -8,7 +8,11 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CrashToolDelegate {
+    func crashToolCallBackState() {
+        CrashStateManager.setIsCrashState(true)
+    }
+    
 
     // pro hand -p true -s false SIGABRT
     // pro hand -p true -s false SIGTRAP/EXC_BREAKPOINT
@@ -16,6 +20,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        CrashTool.sharedInstance().add(self)
         
         if CrashStateManager.getIsCrashState() {
             // 2分钟内，恢复拍照页面
@@ -39,12 +46,12 @@ class ViewController: UIViewController {
     var a = 0
     
     @IBAction func actionCrashArray(_ sender: Any) {
-//        let ary = ["1","2"]
-//        print(ary[2])
+        let ary = ["1","2"]
+        print(ary[2])
         
 //        print([0][1])
         
-        _ = 1/a
+//        _ = 1/a
     }
 
     @IBAction func actionCrashMalloc(_ sender: Any) {
