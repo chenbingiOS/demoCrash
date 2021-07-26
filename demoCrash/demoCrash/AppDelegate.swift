@@ -9,7 +9,11 @@ import UIKit
 
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CrashToolDelegate {
+    func crashToolCallBackState() {
+        print("AppDelegate crashToolCallBackState")
+    }
+    
 
     var window: UIWindow?
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -35,9 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        CrashSignalExceptionHandler.register()
-        CrashUncaughtExceptionHandler.register()
-        
+//        CrashSignalExceptionHandler.register()
+//        CrashUncaughtExceptionHandler.register()
+        CrashTool.registerCrashHandler()
+        CrashTool.sharedInstance().add(self)
 //        DoraemonInstallCrashHandler()
 
 //        KSCrashInstallCrashHandler()

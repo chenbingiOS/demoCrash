@@ -22,8 +22,6 @@ static SignalHandler previousSEGVSignalHandler = NULL;
 static SignalHandler previousSYSSignalHandler  = NULL;
 static SignalHandler previousTRAPSignalHandler = NULL;
 
-static BOOL dismissed = NO;
-
 @implementation CrashSignalExceptionHandler
 
 #pragma mark - Register

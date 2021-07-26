@@ -10,6 +10,8 @@
 #import "CrashUncaughtExceptionHandler.h"
 #import "CrashSignalExceptionHandler.h"
 
+#include <pthread.h>
+
 /// 桥接工具类，弱引用delegate
 @interface CrashToolBridge : NSObject
 
@@ -89,10 +91,7 @@ static NSString *signalName(int signal) {
 
 /// 崩溃产生，临时弹窗功能
 /// @param exceptionInfo 崩溃信息
-+ (void)handlerExceptionRunloop:(NSString *)exceptionInfo {
-    CFRunLoopRef runloop = CFRunLoopGetCurrent();
-    CFArrayRef allmodes  = CFRunLoopCopyAllModes(runloop);
-    
++ (void)handlerExceptionRunloop:(NSString *)exceptionInfo {    
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Crash" message:exceptionInfo preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *conform = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -109,15 +108,6 @@ static NSString *signalName(int signal) {
         // 然后再进行present操作
         [topRootViewController presentViewController:alert animated:YES completion:nil];
     });
-    
-    // 暂时活着
-    while (!dismissed) {
-        for (NSString *mode in (__bridge NSArray *)allmodes) {
-            CFRunLoopRunInMode((CFStringRef)mode, 0.0001, false);
-        }
-    }
-    
-    CFRelease(runloop);
 }
 
 /// 保持崩溃信息，写入本地磁盘
@@ -160,11 +150,13 @@ static NSString *signalName(int signal) {
 
 /// 回调外部
 - (void)startCallBack {
-    for (CrashToolBridge *obj in self.delegatesContainer) {
-        if ([obj.delegate respondsToSelector:@selector(crashToolCallBackState)]) {
-            [obj.delegate crashToolCallBackState];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (CrashToolBridge *obj in self.delegatesContainer) {
+            if ([obj.delegate respondsToSelector:@selector(crashToolCallBackState)]) {
+                [obj.delegate crashToolCallBackState];
+            }
         }
-    }
+    });
 }
 
 - (NSMutableArray *)delegatesContainer {
@@ -177,9 +169,11 @@ static NSString *signalName(int signal) {
 #pragma mark - Public
 
 - (void)addDelegate:(id<CrashToolDelegate>)delegate {
-    CrashToolBridge *bridge = [CrashToolBridge new];
-    bridge.delegate = delegate;
-    [self.delegatesContainer addObject:bridge];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CrashToolBridge *bridge = [CrashToolBridge new];
+        bridge.delegate = delegate;
+        [self.delegatesContainer addObject:bridge];
+    });
 }
 
 /// 注册崩溃监听工具
@@ -192,6 +186,11 @@ static NSString *signalName(int signal) {
 /// 系统崩溃回调工具类处理方法
 /// @param exception OC 异常对象
 + (void)handlerUncaughException:(NSException *)exception {
+    // 记录此次崩溃
+    [[CrashTool sharedInstance] startCallBack];
+        
+    CFRunLoopRef runloop = CFRunLoopGetCurrent();
+    CFArrayRef allmodes  = CFRunLoopCopyAllModes(runloop);
 #if DEBUG
     NSArray * stackArray = [exception callStackSymbols]; // 异常的堆栈信息
     NSString * reason = [exception reason]; // 出现异常的原因
@@ -200,15 +199,30 @@ static NSString *signalName(int signal) {
     // 保存崩溃日志到沙盒cache目录
     [CrashTool saveCrashLog:exceptionInfo fileName:@"Crash(Uncaught)"];
     [self handlerExceptionRunloop:exceptionInfo];
+#else
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dismissed = YES;
+        });
 #endif
-    // 记录此次崩溃
-    [[CrashTool sharedInstance] startCallBack];
+    // 暂时活着
+    while (!dismissed) {
+        for (NSString *mode in (__bridge NSArray *)allmodes) {
+            CFRunLoopRunInMode((CFStringRef)mode, 0.0001, false);
+        }
+    }
+    
+    CFRelease(runloop);
 }
 
 /// Signal 崩溃类型
 /// 系统崩溃回调工具类处理方法
 /// @param signal 崩溃信号编号
 + (void)handlerSignalException:(int)signal {
+    // 记录此次崩溃
+    [[CrashTool sharedInstance] startCallBack];
+    
+    CFRunLoopRef runloop = CFRunLoopGetCurrent();
+    CFArrayRef allmodes  = CFRunLoopCopyAllModes(runloop);
 #if DEBUG
     NSMutableString *mstr = [[NSMutableString alloc] init];
     [mstr appendString:@"Signal Exception:\n"];
@@ -228,9 +242,19 @@ static NSString *signalName(int signal) {
 
     [self saveCrashLog:exceptionInfo fileName:@"MTCrash(Signal)"];
     [self handlerExceptionRunloop:exceptionInfo];
+#else
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dismissed = YES;
+    });
 #endif
-    // 记录此次崩溃
-    [[CrashTool sharedInstance] startCallBack];
+    // 暂时活着
+    while (!dismissed) {
+        for (NSString *mode in (__bridge NSArray *)allmodes) {
+            CFRunLoopRunInMode((CFStringRef)mode, 0.0001, false);
+        }
+    }
+    
+    CFRelease(runloop);
 }
 
 @end

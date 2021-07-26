@@ -1,1 +1,0 @@
-../../../KSCrash/Source/KSCrash/Reporting/Filters/Tools/NSData+KSGZip.h

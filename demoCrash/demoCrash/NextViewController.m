@@ -6,7 +6,6 @@
 //
 
 #import "NextViewController.h"
-#import "fishhook.h"
 #import "CrashTool.h"
 
 @interface NextViewController ()
@@ -21,12 +20,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    struct rebinding nsLog;
-    nsLog.name = "NSLog";
-    nsLog.replacement = nNSLog;
-    nsLog.replaced = (void *)&oNSLog;
-    struct rebinding rebinds[1] = {nsLog};
-    rebind_symbols(rebinds, 1);
+//    struct rebinding nsLog;
+//    nsLog.name = "NSLog";
+//    nsLog.replacement = nNSLog;
+//    nsLog.replaced = (void *)&oNSLog;
+//    struct rebinding rebinds[1] = {nsLog};
+//    rebind_symbols(rebinds, 1);
 }
 
 static void (* oNSLog)(NSString *format, ...);
